@@ -14,6 +14,7 @@ export const register = createAsyncThunk(
                 body: JSON.stringify(userData),
             });
 
+           
             const data = await response.json();
 
             if (!response.ok) {
@@ -93,7 +94,7 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.isAuthenticated = true;
                 state.token = action.payload.token;
-                state.user = action.payload.user;
+                state.user = action.payload;
             })
             .addCase(login.rejected, (state, action) => {
                 state.loading = false;

@@ -13,6 +13,7 @@ function Register() {
         phone: "",
         email: "",
         password: "",
+        // termsAccepted: false,
     });
     const [formErrors, setFormErrors] = useState({});
     const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function Register() {
         if (!formData.password || formData.password.length < 6) {
             errors.password = "Password must be at least 6 characters";
         }
+        if (!formData.termsAccepted) {
+            errors.termsAccepted = "You must accept the terms and conditions";
+        }
         setFormErrors(errors);
         return Object.keys(errors).length === 0;
     };
@@ -45,6 +49,14 @@ function Register() {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
+    // const handleChange = (e) => {
+    //     const { name, value,type, checked } = e.target;
+    //     if (type === "checkbox") {
+    //         setFormData({ ...formData, [name]: checked }); // Update checkbox state
+    //     } else {
+    //         setFormData({ ...formData, [name]: value });
+    //     }
+    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -71,30 +83,42 @@ function Register() {
                 <form className='auth-form' onSubmit={handleSubmit}>
                     {error && <div className="error-message">{error}</div>}
                     <div className='form-group'>
-                        <label>Ad <span className='important'>*</span></label>
-                        <input type='text' name='name' value={formData.name} onChange={handleChange} />
+                        <label htmlFor='name'>Ad <span className='important'>*</span></label>
+                        <input type='text' name='name' id='name' value={formData.name} onChange={handleChange} />
                         <div className='error-message'>{formErrors.name}</div>
                     </div>
                     <div className='form-group'>
-                        <label>Soyad <span className='important'>*</span></label>
-                        <input type='text' name='surname' value={formData.surname} onChange={handleChange} />
+                        <label htmlFor='surname'>Soyad <span className='important'>*</span></label>
+                        <input type='text' name='surname' id='surname' value={formData.surname} onChange={handleChange} />
                         <div className='error-message'>{formErrors.surname}</div>
                     </div>
                     <div className='form-group'>
-                        <label>Mobil nömrə <span className='important'>*</span></label>
-                        <input type='tel' name='phone' value={formData.phone} onChange={handleChange} />
+                        <label htmlFor='phone'>Mobil nömrə <span className='important'>*</span></label>
+                        <input type='tel' name='phone' id='phone' value={formData.phone} onChange={handleChange} />
                         <div className='error-message'>{formErrors.phone}</div>
                     </div>
                     <div className='form-group'>
-                        <label>E-mail <span className='important'>*</span></label>
-                        <input type='text' name='email' value={formData.email} onChange={handleChange} />
+                        <label htmlFor='email'>E-mail <span className='important'>*</span></label>
+                        <input type='text' name='email' id='email' value={formData.email} onChange={handleChange} />
                         <div className='error-message'>{formErrors.email}</div>
                     </div>
                     <div className='form-group'>
-                        <label>Şifrə <span className='important'>*</span></label>
-                        <input type='password' name='password' value={formData.password} onChange={handleChange} />
+                        <label htmlFor='password'>Şifrə <span className='important'>*</span></label>
+                        <input type='password' name='password' id='password' value={formData.password} onChange={handleChange} />
                         <div className='error-message'>{formErrors.password}</div>
                     </div>
+                    {/* <div className='check'>
+                            <input 
+                                type='checkbox' 
+                                name='termsAccepted' 
+                                id='termsAccepted'
+                                checked={formData.termsAccepted} 
+                                onChange={handleChange} 
+                            />
+                            <label  htmlFor="termsAccepted">Şərt və qaydalari qəbul edirəm</label>
+                       
+                        <div className='error-message'>{formErrors.termsAccepted}</div>
+                    </div> */}
                     <button type="submit" disabled={loading} className="auth-button">
                         {loading ? "Registering..." : "Register"}
                     </button>

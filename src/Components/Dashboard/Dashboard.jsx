@@ -7,7 +7,8 @@ import "./Dashboard.css"
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { user,isAuthenticated } = useSelector((state) => state.auth);
+  console.log(user);
 
 
   const handleLogout = () => {
@@ -22,7 +23,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
-        <h2>Welcome Our Application!!!</h2>
+        <h2>Welcome Our Application : {user.name}!!!</h2>
         <p>You have successfully logged in to the application.</p>
         <button onClick={handleLogout} className="logout-button">
           Logout

@@ -62,13 +62,13 @@ function Login() {
             <form onSubmit={handleSubmit} className='login-form'>
                 {error && <div className="error-message">{error}</div>}
                 <div className='input-group'>
-                <label>Email <span className='important'>*</span></label>
-                <input type="email" name="email" placeholder="E-mail" value={formData.email} onChange={handleChange} />
+                <label htmlFor='email'>Email <span className='important'>*</span></label>
+                <input type="email" name="email" id='email' placeholder="E-mail" value={formData.email} onChange={handleChange} />
                 {emailError && <p className="error-message">{emailError}</p>}
                 </div>
                 <div className='input-group'>
-                <label>Şifrə <span className='important'>*</span></label>
-                <input type="password" name="password" placeholder="Şifrə" value={formData.password} onChange={handleChange} />
+                <label htmlFor='password'>Şifrə <span className='important'>*</span></label>
+                <input type="password" name="password" id='password' placeholder="Şifrə" value={formData.password} onChange={handleChange} />
                 {passwordError && <p className="error-message">{passwordError}</p>}
                 </div>
                 <button type="submit" disabled={loading} className='login-button'>
