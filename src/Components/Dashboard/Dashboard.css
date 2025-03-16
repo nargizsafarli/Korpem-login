@@ -1,0 +1,25 @@
+.dashboard-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    font-size: 25px;
+}
+.dashboard-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.logout-button{
+    padding: 10px 40px;
+    background-color: green;
+    font-size: 18px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    &:hover{
+        background-color: rgb(28, 194, 83);
+    }
+}
