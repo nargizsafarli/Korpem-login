@@ -1,15 +1,12 @@
-// src/components/Dashboard.jsx
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/features/auth/authSlice";
 import { Navigate } from "react-router-dom";
-import "./Dashboard.css"
-
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { user,isAuthenticated } = useSelector((state) => state.auth);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
   console.log(user);
-
 
   const handleLogout = () => {
     dispatch(logout());
@@ -18,7 +15,6 @@ const Dashboard = () => {
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
- 
 
   return (
     <div className="dashboard-container">
